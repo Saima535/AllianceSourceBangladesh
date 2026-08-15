@@ -5,16 +5,12 @@ export default function Machinery() {
       title: "Factory Overview",
     },
     {
-      image: "/machine1.png",
-      title: "Needle Detector Machine",
+      image: "/machinary.jpg",
+      title: "Industrial Machinery",
     },
     {
-      image: "/machine2.png",
-      title: "Thread Sucking Machine",
-    },
-    {
-      image: "/factoryandmachinery.jpg",
-      title: "Production Floor",
+      image: "/machinary.jpg",
+      title: "Production Line",
     },
   ];
 
