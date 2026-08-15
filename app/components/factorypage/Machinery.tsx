@@ -8,10 +8,6 @@ export default function Machinery() {
       image: "/machinary.jpg",
       title: "Industrial Machinery",
     },
-    {
-      image: "/machinary.jpg",
-      title: "Production Line",
-    },
   ];
 
   return (
