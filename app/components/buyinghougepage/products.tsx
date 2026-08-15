@@ -1,139 +1,55 @@
 import WorkProcess from "../homepage/WorkProcess";
 
-const fivePocket = [
-  {
-    image: "/1.png",
-    title: "Men’s Five Pocket TRS",
-  },
-  {
-    image: "/2.png",
-    title: "Men’s Five Pocket TRS",
-  },
-  {
-    image: "/3.png",
-    title: "Men’s Five Pocket TRS",
-  },
-  {
-    image: "/4.png",
-    title: "Men’s Five Pocket TRS",
-  },
-];
+const shuffleArray = <T,>(items: T[]) => {
+  const shuffled = [...items];
 
-const ladiesDresses = [
-  {
-    image: "/5.png",
-    title: "Ladies Dresses",
-  },
-  {
-    image: "/6.png",
-    title: "Ladies Dresses",
-  },
-  {
-    image: "/7.jpg",
-    title: "Ladies Dresses",
-  },
-  {
-    image: "/8.png",
-    title: "Ladies Dresses",
-  },
-];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
 
-const girlsDenim = [
-  {
-    image: "/9.png",
-    title: "Girls Wide Leg Jegging",
-  },
-  {
-    image: "/10.png",
-    title: "Girls Wide Leg And Paper Bag ",
-  },
-  {
-    image: "/11.jpg",
-    title: "Premium Heavyweight Hoodie",
-  },
-  {
-    image: "/12.jpg",
-    title: "Streetwear Oversized Hoodie",
-  },
-];
+  return shuffled;
+};
 
-const jeggings = [
-  {
-    image: "/13.jpg",
-    title: "Stretch Fit Denim Jeggings",
-  },
-  {
-    image: "/14.jpg",
-    title: "High-Waist Slim Jeggings",
-  },
-  {
-    image: "/15.jpg",
-    title: "Comfort Flex Jeggings",
-  },
-  {
-    image: "/16.jpg",
-    title: "Streetwear Oversized Hoodie",
-  },
-];
+const pant = shuffleArray([
+  { image: "/1.png", title: "Classic Pant" },
+  { image: "/2.png", title: "Smart Fit Pant" },
+  { image: "/3.png", title: "Cargo Pant" },
+  { image: "/4.png", title: "Slim Pant" },
+  { image: "/9.png", title: "Denim Pant" },
+  { image: "/10.png", title: "Wide Leg Pant" },
+]);
 
-const tShirt = [
-  {
-    image: "/k1.jpg",
-    title: "Classic Cotton Crew T-Shirt",
-  },
-  {
-    image: "/k2.png",
-    title: "Premium Soft Touch V-Neck T-Shirt",
-  },
-  {
-    image: "/k3.jpg",
-    title: "Pique Polo Shirt",
-  },
-  {
-    image: "/k4.jpg",
-    title: "Urban Style Graphic T-Shirt",
-  },
-];
+const denim = shuffleArray([
+  { image: "/13.jpg", title: "Stretch Fit Denim" },
+  { image: "/14.jpg", title: "High-Waist Denim" },
+  { image: "/15.jpg", title: "Comfort Denim" },
+  { image: "/16.jpg", title: "Premium Denim" },
+  { image: "/5.png", title: "Denim Style" },
+  { image: "/6.png", title: "Classic Denim" },
+]);
 
-const polo = [
-  {
-    image: "/k5.jpg",
-    title: "Classic Piqué Polo Shirt",
-  },
-  {
-    image: "/k6.png",
-    title: "Premium Soft Touch V-Neck T-Shirt",
-  },
-  {
-    image: "/k7.jpg",
-    title: "Sport Dry Polo Shirt",
-  },
-  {
-    image: "/k8.jpg",
-    title: "Urban Style Graphic T-Shirt",
-  },
-];
+const tShirt = shuffleArray([
+  { image: "/k1.jpg", title: "Classic Cotton Crew T-Shirt" },
+  { image: "/k2.png", title: "Premium Soft Touch V-Neck T-Shirt" },
+  { image: "/k3.jpg", title: "Pique Polo Shirt" },
+  { image: "/k4.jpg", title: "Urban Style Graphic T-Shirt" },
+  { image: "/k5.jpg", title: "Classic Piqué Polo Shirt" },
+  { image: "/k6.png", title: "Premium Soft Touch Tee" },
+  { image: "/k7.jpg", title: "Sport Dry Polo Shirt" },
+  { image: "/k8.jpg", title: "Modern Graphic Tee" },
+]);
 
-const hoodie = [
-  {
-    image: "/h1.jpg",
-    title: "Classic Pullover Hoodie",
-  },
-  {
-    image: "/h2.jpg",
-    title: "Zipper Front Fleece Hoodie",
-  },
-  {
-    image: "/11.jpg",
-    title: "Premium Heavyweight Hoodie",
-  },
-  {
-    image: "/12.jpg",
-    title: "Streetwear Oversized Hoodie",
-  },
-];
+const hoodie = shuffleArray([
+  { image: "/h1.jpg", title: "Classic Pullover Hoodie" },
+  { image: "/h2.jpg", title: "Zipper Front Fleece Hoodie" },
+  { image: "/11.jpg", title: "Premium Heavyweight Hoodie" },
+  { image: "/12.jpg", title: "Streetwear Oversized Hoodie" },
+  { image: "/7.jpg", title: "Cotton Hoodie" },
+  { image: "/8.png", title: "Soft Fleece Hoodie" },
+]);
 
-const displayDresses = (name, dresses) => {
+const displayDresses = (name: string, dresses: { image: string; title: string }[]) => {
   return (
     <div className="w-full px-6 py-8">
       <div className="m-[16px]">
@@ -141,7 +57,7 @@ const displayDresses = (name, dresses) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-[8px] py-[16px]">
           {dresses.map((item, index) => (
             <div
-              key={index}
+              key={`${item.title}-${index}`}
               className="flex flex-col rounded-xl overflow-hidden"
             >
               <div className="w-full h-[320px] overflow-hidden">
@@ -174,18 +90,19 @@ export default function ProductsComponent() {
           right technical expertise for every product type.
         </p>
       </div>
+
       <div>
-        <h1 className="text-center text-[60px] mt-[5%]">Wooven</h1>
+        <h1 className="text-center text-[60px] mt-[5%]">Woven</h1>
       </div>
-      {displayDresses("Five pocket twill", fivePocket)};
-      {displayDresses("Ladies Dress & Jackets", ladiesDresses)};
-      {displayDresses("Girls Denim", girlsDenim)};
-      {displayDresses("Jeggings", jeggings)};
+      {displayDresses("Pant", pant)}
+      {displayDresses("Denim", denim)}
+
       <div>
         <h1 className="text-center text-[60px] mt-[5%]">Knitwear</h1>
       </div>
-      {displayDresses("T-Shirt", tShirt)};{displayDresses("Polo", polo)};
-      {displayDresses("Hoodie", hoodie)};{displayDresses("Jeggings", jeggings)};
+      {displayDresses("T-Shirt", tShirt)}
+      {displayDresses("Hoodie", hoodie)}
+
       <WorkProcess />
     </div>
   );

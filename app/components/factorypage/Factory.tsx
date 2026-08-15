@@ -6,19 +6,11 @@ export default function FactoryComponent() {
         <h1 className="text-[60px] w-[768px] text-center">
           The Ways to Keep Business Growing
         </h1>
-        <p className="text-[20px] w-[768px]">
-          Are you interested to know details about our factory, production
-          system and company policy at a glance? Please have a look at the
-          provided pdf file.
+        <p className="text-[20px] w-[768px] text-center">
+          We combine efficient production systems, skilled teams, and modern
+          equipment to support growing business needs with consistency and
+          quality.
         </p>
-        <div className="flex justify-center gap-[24px]">
-          <button>
-            <img src="/download.png" alt="" className="w-[174px] h-[67px]" />
-          </button>
-          <button className="w-[131px] h-[51px] rounded-[6px] px-[24px] py-[12px] bg-[#0C97D5] text-white">
-            View PDF
-          </button>
-        </div>
       </div>
     </div>
   );
