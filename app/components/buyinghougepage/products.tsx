@@ -1,5 +1,28 @@
 import WorkProcess from "../homepage/WorkProcess";
 
+const publicImages = Object.entries(
+  import.meta.glob("../../public/*.{png,jpg,jpeg,webp,gif,avif,svg,ico}", {
+    eager: true,
+    import: "default",
+  })
+)
+  .map(([path, image]) => {
+    const fileName = path.split("/").pop() ?? path;
+    const title = fileName
+      .replace(/\.[^.]+$/, "")
+      .replace(/[-_]+/g, " ")
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    return {
+      image: image as string,
+      title,
+      fileName,
+    };
+  })
+  .sort((a, b) => a.fileName.localeCompare(b.fileName));
+
 const shuffleArray = <T,>(items: T[]) => {
   const shuffled = [...items];
 
@@ -102,6 +125,39 @@ export default function ProductsComponent() {
       </div>
       {displayDresses("T-Shirt", tShirt)}
       {displayDresses("Hoodie", hoodie)}
+
+      <div className="w-full px-6 py-10">
+        <div className="m-[16px]">
+          <div className="text-center mb-8">
+            <h2 className="text-[44px] font-[500]">Public Folder Gallery</h2>
+            <p className="text-[18px]">
+              Every image currently available in the public folder.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-[8px] py-[16px]">
+            {publicImages.map((item) => (
+              <div
+                key={item.fileName}
+                className="flex flex-col rounded-xl overflow-hidden border border-gray-200 bg-white"
+              >
+                <div className="w-full h-[320px] overflow-hidden bg-[#F8FAFC]">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="bg-[#F8FAFC] py-4 px-3 text-center">
+                  <p className="text-[18px] font-medium text-[#1a2238] leading-snug">
+                    {item.title}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <WorkProcess />
     </div>
