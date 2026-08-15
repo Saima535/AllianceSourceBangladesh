@@ -6,7 +6,7 @@ export default function Catalog() {
       description: "Sweaters, t-shirts, and knit garments made to order.",
     },
     {
-      image: "/vector15.png",
+      image: "/Vector15.png",
       title: "Woven fabrics",
       description: "Cotton, blends, and specialty woven materials in stock.",
     },
